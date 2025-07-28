@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ text, onClick, active }) => {
     <button
       onClick={onClick}
       className={`
-        w-full px-4 py-2 text-sm font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-purple-300
+        w-full px-4 min-h-14 py-2 text-sm font-medium rounded-lg transition duration-200 focus:outline-none focus:ring-2 focus:ring-purple-300
         ${
           active
             ? "bg-purple-600 text-white hover:bg-purple-700"
