@@ -76,7 +76,7 @@ const MainComponent: React.FC<MainComponentProps> = () => {
             Shopping List
           </h1>
 
-          <Tabs onSelection={handleTabSelection} />
+          <Tabs activeTab={mode} onSelection={handleTabSelection} />
 
           <AddSection
             onAdd={addItem}

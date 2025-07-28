@@ -4,11 +4,9 @@ import path from "path";
 function updateIndexFile(dir: string): boolean {
   const files = fs.readdirSync(dir, { withFileTypes: true });
 
-  const hasExports = false;
-
   const exportsFiles = files
     .filter(
-      (f) => f.isFile() && f.name.endsWith(".ts") && f.name !== "index.ts",
+      (f) => f.isFile() && f.name.endsWith(".ts") && f.name !== "index.ts"
     )
     .map((f) => `export * from "./${f.name.replace(/\.ts$/, "")}";`);
 
@@ -24,7 +22,7 @@ function updateIndexFile(dir: string): boolean {
         // Folder is empty → delete it
         fs.rmdirSync(subDir);
         console.log(
-          `✘  Removed empty folder ${path.relative(process.cwd(), subDir)}`,
+          `✘  Removed empty folder ${path.relative(process.cwd(), subDir)}`
         );
       }
     }
@@ -42,7 +40,7 @@ function updateIndexFile(dir: string): boolean {
     if (indexExists) {
       fs.unlinkSync(indexPath);
       console.log(
-        `✘  Removed empty ${path.relative(process.cwd(), indexPath)}`,
+        `✘  Removed empty ${path.relative(process.cwd(), indexPath)}`
       );
     }
     return false;

@@ -2,19 +2,23 @@ import React from "react";
 import Button from "@components/ui/Button";
 
 export interface TabsProps {
-  text?: string;
   onSelection: (tab: string) => void;
+  activeTab: string;
 }
 
-const Tabs: React.FC<TabsProps> = ({ onSelection }) => {
+const Tabs: React.FC<TabsProps> = ({ onSelection, activeTab }) => {
+  const tabs = ["All", "Not Purchased", "Purchased"];
+
   return (
     <div className="w-full h-10 flex justify-center items-start gap-3">
-      <Button onClick={() => onSelection("All")} text="All" />
-      <Button
-        onClick={() => onSelection("Not Purchased")}
-        text="Not Purchased"
-      />
-      <Button onClick={() => onSelection("Purchased")} text="Purchased" />
+      {tabs.map((tab) => (
+        <Button
+          key={tab}
+          text={tab}
+          onClick={() => onSelection(tab)}
+          active={activeTab == tab}
+        />
+      ))}
     </div>
   );
 };
