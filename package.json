@@ -9,6 +9,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
+    "predeploy": "npm run deploy",
     "deploy": "gh-pages -d dist",
     "add": "node --loader ts-node/esm --experimental-specifier-resolution=node scripts/add-component.ts",
     "add:component": "npm run add -- component",

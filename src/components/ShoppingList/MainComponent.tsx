@@ -25,8 +25,13 @@ const MainComponent: React.FC<MainComponentProps> = () => {
   const addItem = () => {
     if (!input.trim()) return;
 
+    const newItemID =
+      shoppingItems.length === 0
+        ? 1
+        : shoppingItems[shoppingItems.length - 1].id + 1;
+
     const item: Item = {
-      id: shoppingItems.length + 1,
+      id: newItemID,
       description: input.trim(),
       purchased: false,
     };
@@ -57,6 +62,8 @@ const MainComponent: React.FC<MainComponentProps> = () => {
 
   useEffect(() => {
     localStorage.setItem("shoppingList", JSON.stringify(shoppingItems));
+
+    console.log(shoppingItems);
   }, [shoppingItems]);
 
   const shownItems = (): Item[] => {
